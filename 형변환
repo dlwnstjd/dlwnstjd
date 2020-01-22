@@ -1,0 +1,22 @@
+//int a = 2.2;	데이터타입 불일치
+		float a = 2.2F;	//F로 float데이터 타입이라고 명시적 변환
+		
+		//실수일때는 기본적으로 double을 사용하고
+		//float 사용시 명시적 변환을 해줘야함
+		
+		int b = 2147483647;
+		long c = 2147483648L;
+		byte d = 127;
+		
+		double e = 3.0F;
+		//JAVA가 3.0을 F가 붙어있더라도 double형으로 
+		//자동 형 변환을 해준다.
+		
+		//float f = 3.0;
+		//3.0은 double형인데 float형은 double보다 작기때문에
+		//데이터 손실이 나기 때문에 형변환을 하지못한다.
+		
+		//자동 형 변환의 원칙은 표현범위가 좁은 데이터 타입에서
+		//넓은 데이터 타입으로의 변환만 허용 된다.
+		
+		//byte > short,char > int > long > float > double
