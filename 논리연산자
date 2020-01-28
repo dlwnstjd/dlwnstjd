@@ -1,0 +1,49 @@
+&& (And)
+//좌항과 우항의 값이 모두 참(true)일 때 참이 된다
+public static void main(String[] args) {
+		if (true && true) {
+            System.out.println(1);
+        }
+ 
+        if (true && false) {
+            System.out.println(2);
+        }
+ 
+        if (false && true) {
+            System.out.println(3);
+        }
+ 
+        if (false && false) {
+            System.out.println(4);
+        }
+	}
+  
+|| (Or)
+//좌우항 중에 하나라도 true라면 전체가 true
+  public static void main(String[] args) {
+		if (true || true) {
+            System.out.println(1);
+        }
+        if (true || false) {
+            System.out.println(2);
+        }
+        if (false || true) {
+            System.out.println(3);
+        }
+        if (false || false) {
+            System.out.println(4);
+        }
+
+	}
+  
+! (Not)
+//true에 !를 붙으면 false가 되고 false에 !을 붙이면 true가 된다.
+public static void main(String[] args) {
+		if (!true) {
+            System.out.println(1);
+        }
+        if (!false) {
+            System.out.println(2);
+        }
+
+	}
