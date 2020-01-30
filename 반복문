@@ -1,0 +1,57 @@
+-While
+public class WhileDemo {
+
+	public static void main(String[] args) {
+		int i = 0;
+		
+		while (i<10) {
+			//i가 10이되면 false가 되기때문에 반복문이 종료된다.
+            System.out.println("Coding Everybody"+i);
+            i++;
+        }
+		//	while(조건이 True일동안 반복 작업을 한다.){
+		//	반복 실행 영역
+		//	}
+	}
+
+}
+
+-For
+public class ForDemo {
+
+	public static void main(String[] args) {
+		for (int i = 1; i < 10; i=i*2) {
+            System.out.println("Coding Everybody " + i);
+        }
+		// for(초기화; 종료조건; 반복실행){
+		// 반복적으로 실행될 구문
+		// }
+	}
+}
+
+-Break
+public class BreakDemo {
+
+	public static void main(String[] args) {
+		 for (int i = 0; i < 10; i++) {
+			 if (i == 5)
+				 break;
+			 //i가 5가되면 break문을 통해 반복문이 종료 된다.
+	     System.out.println("Coding Everybody " + i);
+	    }
+	}
+}
+
+-Continue
+public class ContinueDemo {
+
+	public static void main(String[] args) {
+		for (int i = 0; i < 10; i++) {
+            if (i == 5)
+                continue;
+            //i가 5가되면 이후의 로직은 실행되지않고
+            //다시 for문으로 돌아간다.
+            System.out.println("Coding Everybody " + i);
+        }
+	}
+}
