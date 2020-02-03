@@ -1,0 +1,64 @@
+public class MethodDemo4 {
+
+	public static void numbering(int limit) {
+		// int init = 매개변수, parameter
+        int i = 0;
+        while (i < limit) {
+            System.out.println(i);
+            i++;
+        }
+    }
+ 
+    public static void main(String[] args) {
+        numbering(5);	
+        // 5 = 인자, argument
+    }
+}
+
+메인메소드에서 nubering함수의 인자 5를 넘겨주고 numbering 함수에서 매개변수 int limit으로 5를 받고 함수를 실행 후 호출한다.
+
+public class MethodDemo6 {
+
+	public static String numbering(int init, int limit) {
+        int i = init;
+        // 만들어지는 숫자들을 output이라는 변수에 담기 위해서 변수에 빈 값을 주었다.
+        String output = "";
+        while (i < limit) {
+            // 숫자를 화면에 출력하는 대신 변수 output에 담았다.
+            output += i; 
+            // output = output + i; > 1+2+3+4 = 1234
+            i++;
+        }
+        // 중요!!! output에 담겨 있는 문자열을 메소드 외부로 반환하려면 아래와 
+        // 같이 return 키워드 뒤에 반환하려는 값을 배치하면 된다.
+        return output; //1234
+    }
+ 
+    public static void main(String[] args) {
+        // 메소드 numbering이 리턴한 값(output, 1234)이 변수 result에 담긴다.
+        String result = numbering(1, 5);
+        // 변수 result의 값을 화면에 출력한다.
+        System.out.println(result);
+    }
+}
+
+public class ReturnDemo4 {
+
+	public static String[] getMembers() {
+        String[] members = { "최진혁", "최유빈", "한이람" };
+        // 문자열배열 members에 "최진혁", "최유빈", "한이람"를 넣는다.
+        return members;
+        // members배열을 리턴한다.
+    }
+ 
+    public static void main(String[] args) {
+        String[] members = getMembers();
+        // getmembers메소드에 리턴된 members값을 문자열배열 members에 대입한다.
+        System.out.println(members);
+        // 배열을 출력할때는 일반적인 println으로는 출력하지 못한다. 밑에 방법으로 출력
+        System.out.println(Arrays.toString(members)); 
+        //위에 members 변수를 설정해서 출력 가능
+        System.out.println(Arrays.toString(getMembers()));
+        //따로 변수 설정을 하지않고 바로 메소드를 
+    }
+}
