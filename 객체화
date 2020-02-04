@@ -1,0 +1,45 @@
+package org.opentutorials.javatutorials.object;
+class Calculator{ //Calculator 클래스 생성
+    int left, right;
+      
+    public void setOprands(int left, int right){  //매개변수 left right
+        this.left = left;
+        // int left = 10;
+        this.right = right;
+        // int right = 20;
+        
+        // this.left는 Calculator안에서 생성된 int left를 뜻 함
+        // 오른쪽 left는 매개변수에서 온 left를 말함
+        // 즉 메인 메소드에서 c1.setOprands(10, 20);할시 매개변수 left에 10 right에 20이 들어가고 
+        // this.left = 10; , this.right = 20이 된다.
+    }
+      
+    public void sum(){
+        System.out.println(this.left+this.right);
+        //System.out.println(10+20); > 30
+    }
+      
+    public void avg(){
+        System.out.println((this.left+this.right)/2);
+        //System.out.println((10+20)/2); > 15
+    }
+}
+  
+public class CalculatorDemo4 {
+      
+    public static void main(String[] args) {
+          
+        Calculator c1 = new Calculator();
+        //Calculator(데이터타입) c1(변수) = new Calculator()(인스턴스,객체 생성);
+        
+        c1.setOprands(10, 20);
+        c1.sum();       
+        c1.avg();       
+          
+        Calculator c2 = new Calculator();
+        c2.setOprands(20, 40);
+        c2.sum();       
+        c2.avg();
+    }
+ 
+}
