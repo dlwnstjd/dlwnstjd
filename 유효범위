@@ -1,0 +1,59 @@
+package org.opentutorials.javatutorials.scope;
+
+public class ScopeDemo {
+	 
+    static void a() {
+        int i = 0;
+    }
+ 
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
+            a();
+            //메소드안에서 선언한 변수는 메소드안에서만 유효하다
+            //따라서 for문에서 i++를 하더라도 a메소드 안에 변수 i는
+            //변하지 않는다.
+            System.out.println(i);
+        }
+    }
+}
+
+package org.opentutorials.javatutorials.scope;
+
+public class ScopeDemo6 {
+    static int i = 5;	//전역변수
+ 
+    static void a() {
+        int i = 10;		//지역변수
+        b();
+    }
+ 
+    static void b() {    	
+        System.out.println(i);
+        //전역변수 i를 호출
+    }
+ 
+    public static void main(String[] args) {
+    	
+        a();
+    }
+}
+
+package org.opentutorials.javatutorials.scope;
+
+class C {
+    int v = 10;
+ 
+    void m() {
+    	int v = 1;
+        System.out.println(v);		//지역변수
+        System.out.println(this.v);	//전역변수
+    }
+}
+ 
+public class ScopeDemo7 {
+ 
+    public static void main(String[] args) {
+        C c1 = new C();
+        c1.m();
+    }
+}
