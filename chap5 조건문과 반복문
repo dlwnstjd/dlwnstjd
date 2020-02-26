@@ -1,0 +1,127 @@
+import java.util.Scanner;
+/*
+ * if(조건식1) {
+ *     문장1 <= 조건식1의 결과가 참인 경우 실행 되는 구문
+ * }else {
+ *     문장2 <= 조건식1의 결과가 거짓인 경우 실행 되는 구문
+ * }
+ * 
+ * if(조건식1) {
+ *     문장1 <= 조건식1의 결과가 참인 경우 실행 되는 구문
+ * }else if(조건식2){
+ * 	      문장2 <= 조건식1의 결과는 거짓이고, 조건식2의 결과가 참인 경우 실행 되는 구문
+ * }else if(조건식3){
+ * 	      문장3 <= 조건식1,2의 결과는 거짓이고, 조건식3의 결과가 참인 경우 실행 되는 구문
+ * }else {
+ *     문장n <= 조건식1,2,3의 결과가 모두 거짓인 경우 실행 되는 구문
+ * }
+ * 실행되는 구문이 한문장일 경우 {} 생략 가능
+ * if, else 구문 내에서 다시 if 구문 사용 가능.
+ */
+public class IfEx1 {
+	public static void main(String[] args) {
+		System.out.println("점수를 입력하세요.");
+		Scanner scan = new Scanner(System.in);
+		int score = scan.nextInt();
+		if(score >= 60) {
+			System.out.println("합격을 축하드립니다.");
+		}else {
+			System.out.println("불합격 입니다.");
+		}
+		
+		if(score>=90) {
+			System.out.println("A");
+		}else if(score>=80) {
+			System.out.println("B");
+		}else if(score>=70) {
+			System.out.println("C");
+		}else {
+			System.out.println("D");
+		}
+	}
+}
+
+/*
+ * 반복문 예제.
+ * 1. for
+ * 2. while
+ * 3. do while
+ * 
+ * 1.for(초기값;조건식;증감식){
+ * 		문장;
+ * }
+ * 2.while(조건식){
+ * 		문장;
+ * }
+ * 3.do {
+ * 		문장;
+ * }while(조건식);
+ * 
+ * while문은 조건식을 먼저 실행, do while문은 문장 먼저실행
+ */
+ public class LoopEx1 {
+	public static void main(String[] args) {
+		System.out.println("for 구문으로 1~5까지 출력하기");
+		for (int i=1;i<=5;i++) {
+			System.out.print(i);
+		}
+		System.out.println();
+		
+		System.out.println("while 구문으로 1~5까지 출력하기");
+		int i = 1;
+		while(i<=5) {
+			System.out.print(i);
+			i++;
+		}
+		System.out.println();
+    
+		System.out.println("dowhile 구문으로 1~5까지 출력하기");
+		i = 1;
+		do {
+			System.out.print(i);
+			i++;
+		}while(i<=5);
+		System.out.println();
+	}
+}
+
+/*
+ * Switch 구문 예제
+ * switch(조건값(변수, 수식)){
+ * 	case 값1 : 문장 1;
+ *  break; 
+ *  case 값2 : 문장 2;
+ *  break;
+ *  default : 문장n;
+ *  }
+ *  break : break가 속한 switch구문, 반복문을 빠짐.
+ */
+public class SwitchEx1 {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("점수를 입력하세요.");
+		int score = scan.nextInt();
+		String grade;
+		switch(score/10) {
+		case 10:
+		case 9:grade="A";
+		break;
+		case 8:grade="B";
+		break;
+		case 7:grade="C";
+		break;
+		case 6:grade="D";
+		break;
+		default : grade="F";
+		}
+		System.out.println(grade + "학점");
+	}
+}
+/*
+ * switch 구문의 조건값으로 사용가능한 자료형
+ * byte, short, int, char, String
+ * 
+ * 조건문: if, switch
+ * 모든 switch 구문은 if 구문으로 변견 가능
+ * 모든 if구문은 switch 구문으로 변경할수 없는것도있다.
+ */
