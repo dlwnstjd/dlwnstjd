@@ -1,0 +1,179 @@
+# Activity Lifecycle
+
+---
+
+## 일반적인 lifecycle과 각 역할
+
+**onCreate**
+
+- Activity를 생성할 때 해당 라이프싸이클 내 딱 한 번만 실행해야 하는 기본 애플리케이션 시작 로직을 수행
+
+**onStart**
+
+- Activity가 사용자에게 보이게 되고, 앱은 Activity를 포그라운드에 보내 상호작용할 수 있도록 준비
+
+**onResume**
+
+- 사용자와 상호작용. 어떤 이벤트가 발생하여 앱에서 포커스가 떠날 때까지 앱이 이 상태에 머무름
+
+**onPause**
+
+- Activity가 일시정지됨 상태일 때 계속 실행(또는 적절히 계속 실행)되어서는 안 되지만 잠시 후 다시 시작할 작업을 일시정지하거나 조정
+
+**onStop**
+
+- Activity가 사용자에게 더 이상 표시되지 않으면 호출되며, 새로 시작된 Activity가 화면 전체를 차지할 경우에 적용
+
+**onDestroy**
+
+- Activity가 소멸되기 전에 호출
+
+### 홈 버튼 클릭 시 Lifecycle
+
+onPause → onStop
+
+### 홈에서 다시 앱 동작 시 Lifecycle
+
+onRestart → onStart → onResume
+
+### A 화면에서 B 화면 이동 시 Lifecycle
+
+(A) onPause → (B) onCreate → onStart → onResume → (A) onStop
+
+### A 화면에서 B 화면 이동, B 화면에서 C 화면 이동 Lifecycle
+
+(A) onPause → (B) onCreate → onStart → onResume → (A) onStop → (B) onPause → (C) onCreate → onStart → onResume → (B) onStop
+
+### B 화면에서 A 화면으로 백 키 Lifecycle
+
+(B) onPause → (A) onRestart → onStart → onResume → (B) onStop → onDestroy
+
+# Service Lifecycle
+
+---
+
+# Memory Leak 발생
+
+---
+
+[Memory Leak?](https://medium.com/@jicheolchoo/memory-leak-2000b474346a)
+
+# RestFul Api ?
+
+---
+
+- REpresentational State Transfer, 즉, 서버로 자원을 전달 시, 대표적인 "상태"를 함께 주고 그 상태에 맞는 응답을 서버에서 받는 것을 의미한다.
+
+### REST ?
+
+- HTTP URI(Uniform Resource Identifier)를 통해 자원(Resource)을 명시하고, HTTP Method(POST, GET, PUT, DELETE)를 통해 해당 자원에 대한 *CRUD Operation을 적용하는 방식으로 동장
+
+### REST API ?
+
+- REST 기반으로 서비스 API를 구현한 것
+
+### HTTP Method
+
+- POST : URI 요청 시 리소스 생성을 위해 설계되었기 때문에 body에 데이터를 담아 보내기 때문에 url에 보이지 않는다. 즉, **정보를 생성**하기 위해 만들어짐.
+- GET : 해당 리소스를 조회하게 설계되었기 때문에, 원하는 값을 url에 보여준다. 즉, **정보를 조회**하기 위해 만들어짐.
+- PUT or PATCH or UPDATE : 해당 **리소스를 수정**
+- DELETE : 해당 **리소스를 삭제**
+
+# Context
+
+---
+
+- 어플리케이션 환경에 관한 글로벌 정보를 접근하기 위한 인터페이스.
+Abstract class 이며, 구현은 안드로이드 시스템에 의해 제공.
+어플리케이션에 특화된 리소스와 클래스에 대해 접근
+Activity의 실행, intent 브로드 캐스팅 및 intent 수신과 같은 애플리케이션 레벨에 대한 호출을 허용
+- 즉, **안드로이드 시스템이 애플리케이션이나 컴포넌트 등을 관리하기 위한 것**이라 생각
+
+# Android 4대 컴포넌트
+
+---
+
+### Activity
+
+- UI 화면을 담당
+- 특징
+    1. 안드로이드 어플리케이션은 반드시 하나 이상의 Activity를 가지고 있어야 합니다.
+    2. 두개의 액티비티를 동시에 Display할 수 없습니다.
+    3. 다른 어플리케이션의 액티비티도 불러낼 수 있습니다.
+    4. 액티비티 내에는 프래그먼트(Fragment)를 추가하여 화면을 분할시킬 수 있습니다.
+
+### Service
+
+- Background에서 실행되는 컴포넌트
+- 특징
+    1. 화면이 없습니다. 그저 백그라운드에서 돌아가는 컴포넌트입니다.
+    2. 한번 시작된 서비스는 어플리케이션이 종료되도 계속해서 백그라운드에서 돌아갑니다.
+    3. 모든 서비스는 Service클래스를 상속받아서 사용합니다.
+    4. 네트워크를 통해서 데이터를 가져올 수 있습니다.
+
+### Broadcast Receiver
+
+- 안드로이드 단말기에서 발생하는 다양한 이벤트 정보(화면이 켜지거나 꺼짐, 리부팅 등)를 받고 반응하는 컴포넌트
+- 특징
+    1. 디바이스에서 발생하는 일 중에서 어플리케이션이 알아야 하는 상황이 발생하면 알려줍니다.
+    2. 수신기를 통해 디바이스의 상황을 감지하고 적절한 작업을 수행합니다.
+    3. 대부분 UI가 존재하지 않습니다.
+
+### Content Provider
+
+- 데이터를 관리하고 다른 애플리케이션 데이터를 제공
+- 데이터베이스의 데이터를 전달할때 많이 사용
+- 콘텐트 제공자는 생명주기를 가지고 있지 않음
+    1. 파일 입출력, SQLiteDB, Web 등을 통해서 데이터를 관리
+    2. 콘텐트 제공자를 통하여 다른 어플리케이션의 데이터도 변경 가능
+
+# Fragment
+
+---
+
+정의 :
+
+동작 :
+
+# CustomView 를 만들 때 onLayout~ onMeasure 둘 다 언제 불러오나?
+
+---
+
+# RxJava or RxKotlin and RxAndroid
+
+---
+
+### Rx가 무엇이며, 사용한 이유
+
+- Rx는 Reactive Programming 을 좀 더 편하게 사용하기 위한 라이브러리
+- Reactive Programming은 반응형 프로그래밍으로, 어떤 데이터를 관찰(Observe)하고 있다가, 데이터가 변경이 되면 반응을 하고, 그 변경된 이벤트를 가지고 관련된 업데이트 로직을 처리하는 것을 뜻함
+- 사용 이유는 설명 그대로 데이터 흐름에 관해 중복되는 코드들을 제거하고 간단히 구성하기 위해 사용
+
+### Reactive Programming
+
+- 데이터 흐름과 전달에 관한 프로그래밍 패러다임
+- 데이터 흐름을 먼저 정의하고, 그 데이터가 변경 시 연관되는 함수나 수식이 업데이트 될 수 있는 것을 의미
+- **메모리 누수**를 해결하기 위한 방법
+    1. Disposable Interface를 이용한 명시적 자원해제
+     onCreate()에서 subscribe()를 호출하면 onDestroy()에서 메모리 참조를 해제하고 onResume()에서 호출하면 onPause()에서 해제합니다.
+    2. CompositeDisposable class 사용 시 생성된 모든 Observable을 안드로이드 라이프 사이클에 맞춰서 한 번에 모두 메모리 해제를 할 수 있습니다.
+
+# ANR?
+
+---
+
+Android 앱의 UI 스레드가 너무 오랫동안 차단되면 'ANR(Application Not Respoding, 애플리케이션 응답 없음)' 오류가 트리거
+
+### 정의
+
+- Application Not Responding 로, Main Thread(UI Thread)가 일정 시간 어떤 Task에 잡힘으로써 발생
+
+### 발생 요인
+
+- 액티비티가 포그라운드에 있는 동안, 앱이 5초 이내에 입력 이벤트 또는 BroadcastReceiver(예: 키 누름 또는 화면 터치 이벤트)에 응답하지 않을 때
+- 포그라운드에 액티비티가 없을 때, BroadcastReceiver가 상당한 시간 내에 실행을 완료하지 못할 때
+
+### 회피 방법
+
+- 매인 스레드(UI Thread)에서 실행되는 메소드는 가능한 한 적은 작업을 수행해야 합니다. 특히 엑티비티의 onCreate() 그리고 onResume() 에서는 가능한한 최소한의 작업만을 수행해야 함. 네트워크 접근, 데이터 처리 또는 비트맵 리사이징과 같은 잠재적으로 오래 걸리는 작업은 작업 스레드(Worker Thread)에서 처리해야 합니다.
+- UI 변동이 있을 때는 프로그레스와 같은 화면을 띄어 사용자에게 기달릴 것을 명시
