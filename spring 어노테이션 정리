@@ -1,0 +1,19 @@
+@Controller
+-Component의 하위 클래스
+-객체화시키고 기능(Controller)추가
+
+@RequestMapping("이름")
+-url에 "이름"을 지정
+-"이름" 요청시 호출
+
+@GetMapping("이름")
+-get방식일때만 실행
+
+@PostMapping("이름")
+-post방식일때만 실행
+
+@Service
+-Component의 하위 클래스
+-Service기능을 담당
+-Controller + dao 중간 매개체 역활
+
