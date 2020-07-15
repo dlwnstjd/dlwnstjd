@@ -1,0 +1,7 @@
+-Maven 프로젝트 만들기
+1. other -> maven project -> next -> maven-archetype-webapp 1.0 선택 -> Artifact id: 프로젝트 이름
+2. shop4 -> Properties -> Java Build Path 클릭 -> JRE 선택 -> Edit 클릭 -> Workspace default JRE(jdk-13.0.2) 선택
+3. Preject Facets 선택 -> Java 13으로 변경 
+4. Java Build PAth -> Class Path 선택 -> Add Library 클릭 -> Server Runtime -> Apache Tomcat 9.0 선택
+5. pom.xml 설정
+6. web.xml 버전 설정
