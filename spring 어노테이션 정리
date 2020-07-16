@@ -46,6 +46,6 @@
 
 @RestController
 - (@Controller + @ResponseBody) 합친내용
-- View를 필요로하지 않고 데이터만 보낼때 사용
+- View를 필요로하지 않고 데이터만 보낼때 사용(ajax 등)
 - json, xml으로 사용가능
 
