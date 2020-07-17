@@ -5,3 +5,6 @@
 4. Java Build PAth -> Class Path 선택 -> Add Library 클릭 -> Server Runtime -> Apache Tomcat 9.0 선택
 5. pom.xml 설정
 6. web.xml 버전 설정
+
+- DB추가 
+Add JARs -> javasecurity -> mariadb
